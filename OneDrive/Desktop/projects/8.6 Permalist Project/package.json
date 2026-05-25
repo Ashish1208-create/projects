@@ -1,16 +1,20 @@
 {
   "name": "5-capstone---todo-list",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Permalist Todo App",
+  "main": "script.js",
   "type": "module",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node script.js",
+    "dev": "nodemon script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
+
   "dependencies": {
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
