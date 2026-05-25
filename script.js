@@ -32,13 +32,13 @@ app.post("/add", (req, res) => {
 });
 
 app.post("/edit", (req, res) => {
-  const item = req.body.updatedItemTitle;
   const id = parseInt(req.body.updatedItemId);
+  const newTitle = req.body.updatedItemTitle;
 
-  const foundItem = items.find((i) => i.id === id);
+  const item = items.find((item) => item.id === id);
 
-  if (foundItem) {
-    foundItem.title = item;
+  if (item) {
+    item.title = newTitle;
   }
 
   res.redirect("/");
@@ -47,7 +47,7 @@ app.post("/edit", (req, res) => {
 app.post("/delete", (req, res) => {
   const id = parseInt(req.body.deleteItemId);
 
-  items = items.filter((i) => i.id !== id);
+  items = items.filter((item) => item.id !== id);
 
   res.redirect("/");
 });
