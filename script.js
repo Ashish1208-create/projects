@@ -66,6 +66,18 @@ app.post("/add", (req, res) => {
   res.redirect("/");
 });
 
+// app.post("/edit", async (req, res) => {
+//   const item = req.body.updatedItemTitle;
+//   const id = req.body.updatedItemId;
+
+//   try {
+//     await db.query("UPDATE items SET title = ($1) WHERE id = $2", [item, id]);
+//     res.redirect("/");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
 app.post("/edit", async (req, res) => {
   const item = req.body.updatedItemTitle;
   const id = req.body.updatedItemId;
@@ -78,14 +90,22 @@ app.post("/edit", async (req, res) => {
   }
 });
 
-app.post("/delete", async (req, res) => {
-  const id = req.body.deleteItemId;
-  try {
-    await db.query("DELETE FROM items WHERE id = $1", [id]);
-    res.redirect("/");
-  } catch (err) {
-    console.log(err);
-  }
+// app.post("/delete", async (req, res) => {
+//   const id = req.body.deleteItemId;
+//   try {
+//     await db.query("DELETE FROM items WHERE id = $1", [id]);
+//     res.redirect("/");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
+app.post("/delete", (req, res) => {
+  const id = parseInt(req.body.deleteItemId);
+
+  items = items.filter((i) => i.id !== id);
+
+  res.redirect("/");
 });
 
 app.listen(port, () => {
